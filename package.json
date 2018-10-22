@@ -1,0 +1,26 @@
+{
+  "name": "toy-robot-simulator",
+  "version": "1.0.0",
+  "description": "Toy Robot Simulator using es6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf bin",
+    "build": "npm run clean && mkdir bin && babel src -s -d bin",
+    "start": "npm run build && node bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdiss/Toy-Robot-Simulator.git"
+  },
+  "author": "janaka Dissanayake",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdiss/Toy-Robot-Simulator/issues"
+  },
+  "homepage": "https://github.com/jdiss/Toy-Robot-Simulator#readme",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-es2015": "6.24.1"
+  }
+}
