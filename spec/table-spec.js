@@ -8,6 +8,7 @@ describe("TableTop", () => {
     });
   
     it("Should have 5 by 5 dimension", () => {
-      expect(table.getTableSize()).toEqual('5 by 5');
+      expect(table.maxPositionX).toEqual(4);
+      expect(table.maxPositionY).toEqual(4);
     });
   });

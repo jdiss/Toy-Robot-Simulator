@@ -1,13 +1,16 @@
 
 class Table {
-    constructor(xSize, ySize)
-    {
-        this.xSize = xSize;
-        this.ySize = ySize;
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
     }
 
-    getTableSize() {
-      return `${this.xSize} by ${this.ySize}`;
+    get maxPositionY() {
+        return this.height - 1;
+    }
+
+    get maxPositionX() {
+        return this.width - 1;
     }
   }
 
