@@ -3,14 +3,18 @@ import { checkNumber,chekString } from '../common/utils';
 
 class Robot {
 	constructor(table) {
-		this.table = table;
+        this.table = table;
+        this._positionX = null;
+        this._positionY = null;
+        this._direction = null;
+
 	}
 
 	isPlace() {
-		if (this._positionX && this._positionY && this._direction) {
-			return true;
-		}
-		throw new Error('No Place in table');
+		if (this._positionX == null || this._positionY == null || this._direction == null) {
+			throw new Error('No Place in table');
+        }
+        return true;
 	}
 
 	move() {
@@ -39,7 +43,7 @@ class Robot {
 	}
 
 	left() {
-		if (isPlace()) {
+		if (this.isPlace()) {
 			switch (this._direction) {
 				case Directions.NORTH:
 					this._direction = Directions.WEST;

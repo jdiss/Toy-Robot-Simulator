@@ -3,25 +3,32 @@ import Table from '../src/components/table'
 import  Directions from '../src/common/constant';
 
 
-describe('robot cretion', () => {
-  let robot;
+describe(' robot placing ', () => {
+  let table;
   beforeEach(() => {
-      robot = new Robot(new Table(5, 5));
+      table = new Table(5, 5);
   });
 
-  it("Should  PLACE 0,0,NORTH ", () => {
+  it("PLACE 0,0,NORTH and MOVE should 0,1,NORTH", () => {
+    let robot = new Robot(table);
     robot.place(0,0,Directions.NORTH);
-    expect(robot.report()).toEqual(`0,0,${Directions.NORTH}`);
+    robot.move();
+    expect(robot.report()).toEqual(`0,1,${Directions.NORTH}`);
   });
 
-  it("Should place  1,4, EAST ", () => {
-    robot.place(1,4,Directions.EAST);
-    expect(robot.report()).toEqual(`1,4,${Directions.EAST}`);
+  it("PLACE 0,0,NORTH and LEFT should 0,0,WEST", () => {
+    let robot = new Robot(table);
+    robot.place(0,0,Directions.NORTH);
+    robot.left();
+    expect(robot.report()).toEqual(`0,0,${Directions.WEST}`);
   });
 
   it("Should move to   1,2, NORTH ", () => {
+    let robot = new Robot(table);
     robot.place(1,1,Directions.NORTH);
+    
     robot.move();
+    
     expect(robot.report()).toEqual(`1,2,${Directions.NORTH}`);
   });
 
