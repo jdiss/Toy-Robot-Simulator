@@ -23,13 +23,14 @@ describe(' robot placing ', () => {
     expect(robot.report()).toEqual(`0,0,${Directions.WEST}`);
   });
 
-  it("Should move to   1,2, NORTH ", () => {
+  it("PLACE 1,2,EAST then MOVE MOVE LEFT MOVE should  3,3,NORTH ", () => {
     let robot = new Robot(table);
-    robot.place(1,1,Directions.NORTH);
-    
+    robot.place(1,2,Directions.EAST);
     robot.move();
-    
-    expect(robot.report()).toEqual(`1,2,${Directions.NORTH}`);
+    robot.move();
+    robot.left();
+    robot.move();
+    expect(robot.report()).toEqual(`3,3,${Directions.NORTH}`);
   });
 
 });
