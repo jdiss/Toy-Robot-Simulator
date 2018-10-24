@@ -1,20 +1,25 @@
-import  facing from '../common/constant';
-import { checkNumber,chekString } from '../common/utils';
+import facing from '../common/constant';
+import { checkNumber, chekString } from '../common/utils';
 
 class Robot {
-	constructor(table) {
-        this.table = table;
-        this._positionX = null;
-        this._positionY = null;
-        this._facing = null;
 
+    /**
+    * The Robot class, constructor
+    * @param {object} table
+    * @constructor
+    */
+	constructor(table) {
+		this.table = table;
+		this._positionX = null;
+		this._positionY = null;
+		this._facing = null;
 	}
 
 	isPlace() {
 		if (this._positionX == null || this._positionY == null || this._facing == null) {
 			throw new Error('No Place in table');
-        }
-        return true;
+		}
+		return true;
 	}
 
 	move() {
