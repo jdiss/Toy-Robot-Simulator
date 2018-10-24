@@ -1,6 +1,6 @@
 import Table from '../src/components/table'
 
-describe("TableTop", () => {
+describe("Table", () => {
     let table;
   
     beforeEach(() => {
