@@ -1,4 +1,4 @@
-import  Directions from '../common/constant';
+import  facing from '../common/constant';
 import { checkNumber,chekString } from '../common/utils';
 
 class Robot {
@@ -6,30 +6,30 @@ class Robot {
         this.table = table;
         this._positionX = null;
         this._positionY = null;
-        this._direction = null;
+        this._facing = null;
 
 	}
 
 	isPlace() {
-		if (this._positionX == null || this._positionY == null || this._direction == null) {
+		if (this._positionX == null || this._positionY == null || this._facing == null) {
 			throw new Error('No Place in table');
         }
         return true;
 	}
 
 	move() {
-		switch (this._direction) {
-			case Directions.NORTH:
+		switch (this._facing) {
+			case facing.NORTH:
 				if (this._positionY < this.table.maxPositionY) {
 					this._positionY++;
 				}
 				break;
-			case Directions.EAST:
+			case facing.EAST:
 				if (this._positionX < this.table.maxPositionX) {
 					this._positionX++;
 				}
 				break;
-			case Directions.SOUTH:
+			case facing.SOUTH:
 				if (this._positionY > 0) {
 					this._positionY--;
 				}
@@ -44,49 +44,49 @@ class Robot {
 
 	left() {
 		if (this.isPlace()) {
-			switch (this._direction) {
-				case Directions.NORTH:
-					this._direction = Directions.WEST;
+			switch (this._facing) {
+				case facing.NORTH:
+					this._facing = facing.WEST;
 					break;
-				case Directions.EAST:
-					this._direction = Directions.NORTH;
+				case facing.EAST:
+					this._facing = facing.NORTH;
 					break;
-				case Directions.SOUTH:
-					this._direction = Directions.EAST;
+				case facing.SOUTH:
+					this._facing = facing.EAST;
 					break;
 				default:
-					this._direction = Directions.SOUTH;
+					this._facing = facing.SOUTH;
 					break;
 			}
 		}
 	}
 
 	right() {
-		switch (this._direction) {
-			case Directions.NORTH:
-				this._direction = Directions.EAST;
+		switch (this._facing) {
+			case facing.NORTH:
+				this._facing = facing.EAST;
 				break;
-			case Directions.EAST:
-				this._direction = Directions.SOUTH;
+			case facing.EAST:
+				this._facing = facing.SOUTH;
 				break;
-			case Directions.SOUTH:
-				this._direction = Directions.WEST;
+			case facing.SOUTH:
+				this._facing = facing.WEST;
 				break;
 			default:
-				this._direction = Directions.NORTH;
+				this._facing = facing.NORTH;
 				break;
 		}
 	}
 
 	report() {
-		return `${this._positionX},${this._positionY},${this._direction}`;
+		return `${this._positionX},${this._positionY},${this._facing}`;
 	}
 
 	place(posX, posY, direction) {
 		try {
 			this._positionX = checkNumber(posX);
 			this._positionY = checkNumber(posY);
-			this._direction = chekString(direction);
+			this._facing = chekString(direction);
 		} catch (e) {
 			throw e;
 		}
